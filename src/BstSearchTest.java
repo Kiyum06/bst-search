@@ -24,5 +24,12 @@ public class BstSearchTest {
         assertTrue(BstSearch.contains(root, 15));
     }
 
-    
+
+    @Test
+    void containsValueAtRoot() {
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(10);
+
+        assertTrue(BstSearch.contains(root, 10));
+    }
+
 }
