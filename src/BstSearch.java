@@ -21,27 +21,53 @@ public class BstSearch {
      * @return true if the target is contained in the tree, false otherwise
      * @throws NullPointerException if target is null
      */
-    public static <T extends Comparable<T>> boolean contains(BinaryTreeNode<T> root, T target) {
-        // Implement here, and make sure to implement tests too!
-        if (target == null) {
-            throw new NullPointerException("target can not be null");
-        }
 
-        BinaryTreeNode<T> current = root;
+     // Iteratively
+    // public static <T extends Comparable<T>> boolean contains(BinaryTreeNode<T> root, T target) {
+    //     // Implement here, and make sure to implement tests too!
+    //     if (target == null) {
+    //         throw new NullPointerException("target can not be null");
+    //     }
 
-        while (current != null) {
-            int comparison = target.compareTo(current.data);
+    //     BinaryTreeNode<T> current = root;
 
-            if (comparison == 0) {
-                return true;
-            } else if (comparison < 0) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-        }
+    //     while (current != null) {
+    //         int comparison = target.compareTo(current.data);
 
+    //         if (comparison == 0) {
+    //             return true;
+    //         } else if (comparison < 0) {
+    //             current = current.left;
+    //         } else {
+    //             current = current.right;
+    //         }
+    //     }
+
+    //     return false;
+    // }
+
+
+    // Recursively
+    public static <T extends Comparable<T>> boolean contains(
+        BinaryTreeNode<T> root, T target) {
+
+    if (target == null) {
+        throw new NullPointerException("target cannot be null");
+    }
+
+    if (root == null) {
         return false;
     }
+
+    int comparison = target.compareTo(root.data);
+
+    if (comparison == 0) {
+        return true;
+    } else if (comparison < 0) {
+        return contains(root.left, target);
+    } else {
+        return contains(root.right, target);
+    }
+}
     
 }
