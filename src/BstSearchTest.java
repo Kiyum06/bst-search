@@ -32,4 +32,14 @@ public class BstSearchTest {
         assertTrue(BstSearch.contains(root, 10));
     }
 
+    @Test
+    void returnsFalseWhenValueNotFound() {
+        BinaryTreeNode<Integer> root =
+            new BinaryTreeNode<>(10,
+                new BinaryTreeNode<>(5),
+                new BinaryTreeNode<>(15));
+
+        assertFalse(BstSearch.contains(root, 7));
+    }
+
 }
